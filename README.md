@@ -80,29 +80,38 @@ npm run dev
 
 ## 部署指南
 
-### 三种后端运行方式
+### 推荐方式：一键部署（Systemd 服务）
 
-#### 🟢 方案 1：Systemd 服务（推荐生产环境）
-
-**优点**：开机自启、自动重启、日志管理
+**优点**：开机自启、自动重启、日志管理、前后端同时部署、网络中断后自动恢复
 
 ```bash
-# 一键部署
+# 一键部署（前端 + 后端）
 ./deploy.sh
 
-# 管理命令
-sudo systemctl status echocast    # 查看状态
-sudo systemctl restart echocast   # 重启服务
-sudo systemctl stop echocast      # 停止服务
-sudo journalctl -u echocast -f    # 查看实时日志
+# 后端服务管理
+sudo systemctl status echocast-backend     # 查看后端状态
+sudo systemctl restart echocast-backend    # 重启后端
+sudo journalctl -u echocast-backend -f     # 查看后端日志
+
+# 前端服务管理
+sudo systemctl status echocast-frontend    # 查看前端状态
+sudo systemctl restart echocast-frontend   # 重启前端
+sudo journalctl -u echocast-frontend -f    # 查看前端日志
+
+# 停止所有服务
+./stop_backend.sh
+# 或
+sudo systemctl stop echocast-backend echocast-frontend
 ```
 
-#### 🔵 方案 2：Screen 会话（推荐开发/测试）
+### 其他运行方式
 
-**优点**：简单快速、可随时查看、退出 SSH 后服务继续运行
+#### 🟡 方案 2：Screen 会话（临时开发）
+
+**优点**：简单快速、可随时查看
 
 ```bash
-# 启动服务
+# 仅启动后端（临时）
 ./run_backend.sh
 
 # 查看运行中的会话
@@ -118,37 +127,31 @@ Ctrl+A, 然后按 D
 ./stop_backend.sh
 ```
 
+**注意**：此方式仅启动后端，前端需手动启动：`cd frontend && npm run dev`
+
 #### 🟡 方案 3：直接运行（临时测试）
 
 ```bash
+# 后端
 cd backend
 uvicorn app.main:app --host 0.0.0.0 --port 18188 --reload
+
+# 前端（另开终端）
+cd frontend
+npm run dev
 ```
 
 **注意**：退出终端后服务会停止
 
-### 快速部署命令
-
-```bash
-# 停止所有后端服务
-./stop_backend.sh
-
-# 使用 systemd 启动（推荐生产环境）
-./deploy.sh
-
-# 或使用 screen 启动（推荐开发环境）
-./run_backend.sh
-```
-
 ### 防火墙设置
 
-确保 EC2 安全组开放 18188 端口：
+确保 EC2 安全组开放以下端口：
+- `18188` - 后端 API
+- `3003` - 前端开发服务器
 
 ```bash
 # 检查端口监听状态
-sudo netstat -tlnp | grep 18188
-# 或者
-sudo ss -tlnp | grep 18188
+sudo netstat -tlnp | grep -E "18188|3003"
 ```
 
 ## 项目结构
