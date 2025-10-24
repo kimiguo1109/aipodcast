@@ -13,7 +13,7 @@ screen -S echocast -X quit 2>/dev/null
 
 # 创建新的 screen 会话并运行服务
 cd /root/usr/podcast_web/backend
-screen -dmS echocast bash -c "uvicorn app.main:app --host 0.0.0.0 --port 8000"
+screen -dmS echocast bash -c "uvicorn app.main:app --host 0.0.0.0 --port 18188"
 
 sleep 2
 
@@ -28,7 +28,7 @@ echo "  进入会话: screen -r echocast"
 echo "  退出会话: 在会话中按 Ctrl+A 然后按 D"
 echo "  停止服务: screen -S echocast -X quit"
 echo ""
-echo "🌐 API 地址: http://localhost:8000"
-echo "📖 API 文档: http://localhost:8000/docs"
+echo "🌐 API 地址: http://localhost:18188"
+echo "📖 API 文档: http://localhost:18188/docs"
 echo ""
 

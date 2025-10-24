@@ -33,7 +33,7 @@ Type=simple
 User=root
 WorkingDirectory=/root/usr/podcast_web/backend
 Environment="PATH=$PATH:/root/usr/podcast_web/backend/venv/bin"
-ExecStart=/root/usr/podcast_web/backend/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+ExecStart=/root/usr/podcast_web/backend/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 18188
 Restart=always
 RestartSec=10
 
@@ -66,8 +66,8 @@ echo "  停止服务: sudo systemctl stop echocast"
 echo "  重启服务: sudo systemctl restart echocast"
 echo "  禁用服务: sudo systemctl disable echocast"
 echo ""
-echo "🌐 API 地址: http://$(curl -s ifconfig.me):8000"
-echo "📖 API 文档: http://$(curl -s ifconfig.me):8000/docs"
+echo "🌐 API 地址: http://$(curl -s ifconfig.me):18188"
+echo "📖 API 文档: http://$(curl -s ifconfig.me):18188/docs"
 echo ""
 
 # 显示服务状态

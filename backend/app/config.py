@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     
     # 应用配置
     app_name: str = "EchoCast API"
-    api_port: int = 8000
+    api_port: int = 18188
     debug: bool = True
     
     # AWS S3 配置

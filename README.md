@@ -59,7 +59,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 ```bash
 cd backend
 pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+uvicorn app.main:app --reload --port 18188
 ```
 
 ### 前端设置
@@ -70,7 +70,7 @@ npm install
 npm run dev
 ```
 
-前端将在 `http://localhost:5173` 运行，后端 API 在 `http://localhost:8000`
+前端将在 `http://localhost:5173` 运行，后端 API 在 `http://localhost:18188`
 
 ## 部署指南
 
@@ -116,7 +116,7 @@ Ctrl+A, 然后按 D
 
 ```bash
 cd backend
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn app.main:app --host 0.0.0.0 --port 18188 --reload
 ```
 
 **注意**：退出终端后服务会停止
@@ -136,13 +136,13 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 ### 防火墙设置
 
-确保 EC2 安全组开放 8000 端口：
+确保 EC2 安全组开放 18188 端口：
 
 ```bash
 # 检查端口监听状态
-sudo netstat -tlnp | grep 8000
+sudo netstat -tlnp | grep 18188
 # 或者
-sudo ss -tlnp | grep 8000
+sudo ss -tlnp | grep 18188
 ```
 
 ## 项目结构
@@ -169,8 +169,8 @@ aipodcast/
 ## API 文档
 
 启动后端服务后，访问以下地址查看 API 文档：
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
+- Swagger UI: `http://localhost:18188/docs`
+- ReDoc: `http://localhost:18188/redoc`
 
 ## 安全说明
 
