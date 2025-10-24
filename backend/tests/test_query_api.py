@@ -4,7 +4,7 @@
 import requests
 import json
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = "http://localhost:18188"
 
 def test_get_podcasts_list():
     """测试获取播客列表"""

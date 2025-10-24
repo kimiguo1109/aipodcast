@@ -67,10 +67,16 @@ uvicorn app.main:app --reload --port 18188
 ```bash
 cd frontend
 npm install
+
+# 复制环境变量文件（如需修改 API 地址）
+cp .env.example .env.local
+
 npm run dev
 ```
 
-前端将在 `http://localhost:5173` 运行，后端 API 在 `http://localhost:18188`
+前端将在 `http://localhost:3003` 运行，后端 API 在 `http://localhost:18188`
+
+> **注意**：前端默认会连接到 `http://localhost:18188` 的后端 API。如果您的后端部署在其他地址，请修改 `frontend/.env.production` 文件中的 `VITE_API_BASE_URL`
 
 ## 部署指南
 
@@ -171,6 +177,20 @@ aipodcast/
 启动后端服务后，访问以下地址查看 API 文档：
 - Swagger UI: `http://localhost:18188/docs`
 - ReDoc: `http://localhost:18188/redoc`
+
+## 环境变量说明
+
+### 后端环境变量（`.env`）
+- `AWS_ACCESS_KEY_ID` - AWS 访问密钥
+- `AWS_SECRET_ACCESS_KEY` - AWS 密钥
+- `ELEVENLABS_API_KEY` - ElevenLabs API 密钥
+- `GEMINI_API_KEY` - Google Gemini API 密钥
+- `API_PORT` - 后端服务端口（默认 18188）
+
+### 前端环境变量
+- `.env.development` - 开发环境配置
+- `.env.production` - 生产环境配置
+- `VITE_API_BASE_URL` - 后端 API 地址
 
 ## 安全说明
 

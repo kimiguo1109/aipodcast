@@ -5,7 +5,7 @@ import requests
 import io
 
 # API 基础 URL
-BASE_URL = "http://localhost:8000"
+BASE_URL = "http://localhost:18188"
 
 def test_upload_api():
     """测试上传 API"""

@@ -4,7 +4,7 @@
 import requests
 import io
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = "http://localhost:18188"
 
 def test_job_status_api():
     """测试任务状态 API"""

@@ -6,7 +6,7 @@ import requests
 import io
 import time
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = "http://localhost:18188"
 
 def test_complete_workflow():
     """测试完整的播客生成流程"""
