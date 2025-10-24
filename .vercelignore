@@ -1,0 +1,14 @@
+backend/
+stitch_echocast_landing_page/
+workflow_note/
+upload_files/
+.spec-workflow/
+.git/
+.env
+*.log
+__pycache__/
+venv/
+node_modules/
+.DS_Store
+*.pyc
+

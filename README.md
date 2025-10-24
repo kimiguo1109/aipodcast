@@ -206,6 +206,37 @@ aipodcast/
 
 欢迎提交 Issue 和 Pull Request！
 
+## Vercel 部署
+
+### 快速部署前端到 Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kimiguo1109/aipodcast)
+
+**部署步骤：**
+
+1. **连接 GitHub 仓库**
+   - 登录 Vercel
+   - 导入 GitHub 仓库
+   - Vercel 会自动检测 `vercel.json` 配置
+
+2. **配置环境变量**（可选）
+   ```
+   VITE_API_BASE_URL=https://echocast.genstudy.ai
+   ```
+
+3. **部署**
+   - Vercel 会自动构建前端
+   - API 请求会自动代理到后端服务器（echocast.genstudy.ai）
+
+**注意事项：**
+- 前端部署在 Vercel
+- 后端继续在 EC2 运行（使用 `./deploy.sh`）
+- API 请求通过 Vercel 的 rewrites 代理到后端
+- 确保后端服务器 CORS 允许 Vercel 域名访问
+
+**自定义域名：**
+在 Vercel 项目设置中可以添加自定义域名
+
 ## 许可证
 
 MIT License

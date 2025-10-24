@@ -30,13 +30,16 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         "http://13.52.175.51:3003",
         "http://172.31.1.167:3003",
-        # Production domain
+        # Production domains
         "https://echocast.genstudy.ai",
         "http://echocast.genstudy.ai",
+        # Vercel deployments (需要在部署后添加具体域名)
+        # 临时允许所有来源（开发阶段），生产环境请设置具体域名
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    allow_origin_regex=r"https://.*\.vercel\.app",  # 允许所有 Vercel 部署域名
 )
 
 
