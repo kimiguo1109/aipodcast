@@ -40,8 +40,9 @@ class Settings(BaseSettings):
     allowed_extensions: list = [".txt", ".pdf", ".doc", ".docx", ".mp3", ".wav", ".mp4", ".mov"]
     
     class Config:
-        env_file = ".env"
+        env_file = Path(__file__).parent.parent.parent / ".env"
         case_sensitive = False
+        env_file_encoding = 'utf-8'
 
 
 # 创建全局配置实例
